@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"/>	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Submit Parking</title>
+<body>
+	<header>
+		<div class="logo">
+			<img src="res/parking_icon.png" width="50" height="50" alt="Parking Manager Logo">
+		</div>
+		<div class="appName">
+			<h1>Parking Manager</h1>
+		</div>
+	</header>
+	<nav>
+		<div class="topnav">
+			<div class="leftNav">
+		  		<a class="active" href="submission.html" title="Post a Spot">Post a Spot</a>
+		  		<a href="profile.html" title="Profile">Profile</a>
+		  		<a id="search" href="search.html" title="Search">Search</a>
+		  	</div>
+	  		<div class="rightNav">
+	  			<a id="logout" href="sign-in.html">Logout</a>
+	  		</div>
+  		</div>
+	</nav>
+	<!-- center box -->
+	<div class="centered">
+		<form action="parking.html">
+			<div id="submissionBox" class="registerBox">
+				<!-- Flex of form data -->
+				<div id="topFlex">
+					<!-- flex of data entry -->
+					<div class="formLeft">
+						<label for="name"><b>Spot Name</b></label><br>
+						<input type="text" placeholder="Enter a name for the spot" id="name" required> <br>
+						<label for="description"><b>Description</b></label><br>
+						<textarea id="description" placeholder="Enter a description" cols="30" rows="5"></textarea> <br>
+						<label for="type"><b>Type of Spot</b></label>
+						<select id="type">
+							<option value="Outdoor">Outdoor</option>
+							<option value="Underground">Underground</option>
+							<option value="Private">Private</option>
+						</select> <br>
+						<label for="lat"><b>Latutude</b></label><br>
+						<input type="number" placeholder="Enter the latitude" id="lat" required step="0.00001"> <br>
+						<label for="lon"><b>Longitude</b></label><br>
+						<input type="number" placeholder="Enter the longitude" id="lon" required step="0.00001"> <br>
+					</div>
+					<!-- flex of file inputs -->
+					<div class="imageRight">
+						<label for="image"><b>Upload an image</b></label>
+						<input type="file" id="image" accept="image/*" required> <br> <br>
+						<label for="video"><b>Upload an video</b>(Optional)</label>
+						<input type="file" id="video" accept="video/*">
+					</div>
+				</div>
+				<!-- flex to have submit button centered -->
+				<div id="bottomFlex">
+					<input type="submit" class="register-button" value="Submit">
+				</div>
+			</div>
+		</form>
+	</div>	
+	<footer>
+		<h4>Pareek Ravi - ravip2</h4>
+	</footer>
+</body>
+</html>

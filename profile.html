@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"/>	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Profile Page</title>
+<!-- Body is a flex so header, and footer are at the top and bottom of pages -->
+<body>
+		<!-- Header to have a logo and my app name -->
+	<div class="table">
+		<header>
+			<div class="logo">
+				<img src="res/parking_icon.png" width="50" height="50" alt="Parking Manager Logo">
+			</div>
+			<div class="appName">
+				<h1>Parking Manager</h1>
+			</div>
+		</header>
+		<!-- The navigation menu -->
+		<nav>
+			<!-- This is in a flex box directioned by row -->
+			<div class="topnav">
+					<!-- Left nav to the left -->
+				<div class="leftNav">
+			  		<a href="submission.html" title="Post a Spot">Post a Spot</a>
+			  		<a class="active" href="profile.html" title="Profile">Profile</a>
+			  		<a href="search.html" title="Search">Search</a>
+		  		</div>
+		  		<div class="rightNav">
+					<!-- Left nav to the right -->
+		  			<a id="logout" href="sign-in.html">Logout</a>
+		  		</div>
+	  		</div>
+		</nav>
+		<!-- wrap the page nicely -->
+		<div class="profilePage">
+			<!-- flex box left anfd right side -->
+			<div class="profileContainer">
+				<!-- the image section of the page -->
+				<div class="floatProfileSection">
+					<img src="res/profilePicture.jpg" alt="User's profile picture" class="profilePicture">
+					<h1 style="text-align: center;">Pareek Ravi</h1>
+					<h2 style="text-align: center;">ravip2@mcmaster.ca</h2>
+				</div>
+				<!-- display on right flex -->
+				<div class="listings">
+					<div class="openListings">
+						<h2>Available Listings</h2>
+						<a href="parking.html">
+								<div class="parkingSpot">
+									<img src="res/parking_spot1.jpg" style="margin: 10px 10px;" width="150" height="150" alt="Image of parking spot for result 1">
+									<div class="parkingInfo">
+										<h3>Parking spot at Lot M</h3>
+										<h4>Distance: 4.53 KM</h4>
+										<h4>Location: (43.260879,-79.91922540000002)</h4>
+										<hr>
+										<p class="desciption">A wonderful spot that is walking distance to McMaster University. There is also a shuttle bus 2 minutes away which goes directly to the campus and stops at thode library.</p>
+									</div>
+									<div class="parkingCostRating">
+										<h3>$7</h3>
+										<h4>★★★★</h4>
+									</div>
+								</div>
+							</a>
+					</div>
+
+					<div class="closedListings">
+						<h2>Occupied Listings</h2>
+						<a href="parking.html">
+								<div class="parkingSpot">
+									<img src="res/parking_spot1.jpg" style="margin: 10px 10px;" width="150" height="150" alt="Image of parking spot for result 1">
+									<div class="parkingInfo">
+										<h3>Parking spot at Lot M</h3>
+										<h4>Distance: 4.53 KM</h4>
+										<h4>Location: (43.260879,-79.91922540000002)</h4>
+										<hr>
+										<p class="desciption">A wonderful spot that is walking distance to McMaster University. There is also a shuttle bus 2 minutes away which goes directly to the campus and stops at thode library.</p>
+									</div>
+									<div class="parkingCostRating">
+										<h3>$7</h3>
+										<h4>★★★★</h4>
+									</div>
+								</div>
+							</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<h4>Pareek Ravi - ravip2</h4>
+		</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,544 @@
+/*The header with the title and logo*/
+/*1 padding is to have it fill the enpty spaces*/
+header{
+	background-color: #909090;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin: 0px;
+}
+/*Footer with name and macID*/
+/*1 padding is to have it fill the enpty spaces*/
+footer{
+	text-align: center; 
+	background-color: #909090;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+/*all lines will not have any underlines*/
+a{
+	text-decoration: none;
+}
+#login{
+	height: auto;
+}
+/*move the margin slightly down*/
+/*stick it left*/
+.logo{
+	margin-top: 1%;
+	float: left;
+	display: inline;
+}
+/*center the text*/
+.appName{
+	margin: 0px;
+	text-align: center;
+}
+/*leave the decription size the way it is*/
+.description{
+	resize: false;
+}
+/*the navigation bar*/
+.topnav {
+	margin-top: 0px;
+	padding-top: 0px;
+    background-color: #e9e9e9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*links in the navigation bar*/
+.topnav a {
+  /*float: left;*/
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav .rightNav {
+  /*float: right;*/
+
+}
+.topnav .leftNav {
+  /*float: right;*/
+}
+/*when hovering over a link in the nav*/
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/*when a link in the nav is active*/
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+/*a button on the right nav*/
+.topnav .rightNav button {
+  float: right;
+  padding: 2px 6px 2px;
+  margin-top: 12px;
+  margin-left: 5px;
+  margin-right: 16px;
+  background: #e9e9e9;
+  border: none;
+  cursor: pointer;
+}
+/*setting a background to the html and body*/
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-image: url("res/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+/*body is a flex to have the header and footer stuck to the top and bottom*/
+body{
+	display: flex;
+	flex-direction: column;
+}
+/*have the box as a flex to have the top and bottom divs spaced evenly*/
+#submissionBox{
+	display: flex;
+	flex-direction: column;
+	margin-top: 10%;
+}
+/*all captions for the images*/
+figcaption{
+	text-align: center; 
+	padding-top: 10px;
+}
+/*creating a border and centering the elements in the div*/
+.registerBox{
+	padding: 20px;
+	margin: auto;
+	margin-top: 12%;
+	overflow-x: hidden;
+	overflow-y: auto; 
+	border: 4px solid #33a5ff;
+	border-radius: 10px;
+  	background: #e9e9e9; 
+  	width: 50%;
+  	height: 100%;
+}
+/*setting the flex value to 1 to have even flex with imageRight*/
+.formLeft{
+	flex: 1;
+}
+/*even flex with formLeft*/
+.imageRight{
+	margin-top: 9%;
+	flex: 1;
+}
+/*the topfor the top half of the flex*/
+#topFlex{
+	display: flex;
+	flex-direction: row;
+}
+/*center all elements in the div*/
+/*center the div in the above div*/
+.centered{
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+  	justify-content: center;
+  	align-items: center;
+  	overflow: auto;
+}
+/*center element*/
+#existingAccount{
+	align-self: center;
+	text-align: center;
+}
+/*style the link for first view*/
+#existingAccount a:link {
+    color: blue; 
+    background-color: transparent; 
+    text-decoration: none;
+}
+/*once the link has been visited*/
+#existingAccount a:visited {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+}
+/*when hovering over the link*/
+#existingAccount a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+/*when the link is active*/
+#existingAccount a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+/*style the button*/
+.register-button{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 40%;
+	background-color: #008CBA; /* Blue */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+/*when hovering over the button*/
+.register-button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/*a button for getting current location*/
+#locationButton{
+	margin-top: 5px;
+	background: none;
+	border: none; 
+	cursor: pointer;
+}
+/*when the button is active*/
+/*change the icon to a blue version*/
+/*this is currently not working without javascript*/
+#locationButton:active{
+	image-rendering: url("res/location_icon.png"); 
+	/*background-color: red;*/
+}
+/*This is taken from w3school*/
+.slider{
+	-webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    background: #d3d3d3; /* Grey background */
+    opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+textarea{
+	resize: none;
+}
+
+.updateSearch{
+	width: 30%;
+	float: left;
+}
+.results{
+	float: right;
+	width: 60%;
+}
+
+.parkingSpot{
+	margin-top: 5px;
+	margin-right: 5px;
+	padding-right: 10px;
+	display: flex;
+	flex-direction: row;
+	border: 4px solid #33a5ff;
+	border-radius: 10px;
+	background: #e9e9e9;
+}
+.parkingInfo{
+	justify-content: flex-start;
+}
+.mapview{
+	margin: auto;
+	width: 50%;	
+	display: inline-block;
+}
+#map{
+	display: block;
+	margin: 10px auto;
+}
+.parkingCostRating{
+	float: right;
+	margin-left: auto;
+	justify-content: flex-end;
+}
+.searchbox{
+	border: 4px solid #33a5ff;
+	border-radius: 10px;
+	background: #e9e9e9;
+	margin-left: 20px;
+	margin-top: 20px;
+	padding: 5px;
+	display: block;
+}
+
+.parkingDetails{
+	background: #e9e9e9;
+	width: 85%;
+	padding: 0 20px;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+}
+.parkingWrapper{
+	flex: 1;
+	margin: 0 auto;
+}
+.parkingImage{
+	flex: 1;
+	float: left;
+	width: 30%;
+}
+.parkingPic{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	max-width: 90%;
+	max-height: 60%;
+	width: auto;
+	height: auto;
+}
+.parkingDetailsContent{
+	float: right;
+	flex: 1;
+	width: 55%;
+}
+.editButton{
+	float: right;
+	margin-right: 20px;
+	/*margin-top: 50%;*/
+	background-color: transparent;
+    padding: 20px 20px;
+    display: inline-block;
+    border: none;
+    background-image: url("res/edit_icon.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+.editButton:hover{
+	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.parkingDetailsTable{
+	border: 2px solid #33a5ff;
+}
+.parkingDetailsTable td{
+	border: 2px solid #33a5ff;
+	padding: 5px;
+}
+.parkingReviewTable{
+
+}
+.parkingReview{
+	border: 4px solid #33a5ff;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 10px;
+}
+
+.reviwer{
+	float: left;
+	padding-right: 10px;
+}
+
+.profileContainer{
+	display: flex;
+	flex-direction: row;
+}
+.profilePicture{
+	height: 90%;
+	width: 80%;
+	display: block;
+	margin: 0 auto;
+	padding: 20px;
+}
+.reviewer{
+	height: 150px;
+	width: 150px;
+	padding: 0px;
+
+}
+.floatProfileSection{
+	border: 4px solid #33a5ff;
+	border-radius: 10px;
+	background: #e9e9e9;
+	margin: 20px;
+	width:40%;
+	height: 100%;
+}
+.profilePage{
+	width: 98%;
+	height: 100%
+}
+
+.listings{
+	float: right;
+	max-width: 75%;
+	border: 2px solid #33a5ff;
+	border-radius: 4px;
+	background: #e9e9e9;
+	padding: 30px;
+	margin: 20px;
+}
+
+.spotHeader{
+	display: inline-block;
+}
+
+.price{
+	margin: -10px auto;
+}
+.priceTable{
+	display: flex;
+	flex-direction: row;
+}
+
+.col{
+	display: flex;
+	flex: column;
+	text-align: center;
+}
+#minPrice{
+	flex: 1;
+	margin-left: 1%;
+}
+
+#maxPrice{
+	flex: 1;
+	margin-left: 1%;
+}
+
+#minPriceLabel{
+	/*flex: 1;*/
+}
+
+#maxPriceLabel{
+	/*flex: 1;*/
+}
+
+.selectDropdown{
+	display: inline-block;
+}
+
+#searchBar{
+	width: 95%;
+}
+#dist{
+	width: 85%;
+}
+
+@media only screen and (max-device-width: 400px) {
+	#topFlex{
+		flex-direction: column;
+	}
+	#description{
+		width: 100%;
+	}
+	.register-button{
+		margin-left: 30%
+	}
+	.profileContainer{
+		flex-direction: column;
+	}
+	.floatProfileSection{
+		width: auto;
+	}
+	.parkingSpot{
+		flex-direction: column;
+		border: none;
+		padding: 0;
+	}
+	.parkingInfo{
+		border-bottom: 2px solid black;
+	}
+	.parkingDetails{
+		flex-direction: column;
+	}
+	.parkingDetailsContent{
+		flex: none;
+		width: 100%;
+	}
+	.parkingImage{
+		flex: none;
+		width: 100%;
+	}
+	.reviwer{
+		width: 100%;
+	}
+	.registerBox{
+		width: 80%;
+	}
+	.selectDropdown{
+		width: 100%;
+	}
+	#searchBar{
+		width: 90%;
+	}
+	#dist{
+		width: 75%;
+	}
+	.updateSearch{
+		width: 95%;
+		float: none;
+		padding-bottom: 1%;
+		margin: 0 auto;
+	}
+	.results{
+		margin: 0 auto;
+		float: none;
+		width: 95%;
+		padding-bottom: 1%;
+	}
+
+}
+@media only screen and (max-width: 800px) {
+	#topFlex{
+		flex-direction: column;
+	}
+	#description{
+		width: 100%;
+	}
+	.register-button{
+		margin-left: 30%
+	}
+	.profileContainer{
+		flex-direction: column;
+	}
+	.floatProfileSection{
+		width: auto;
+	}
+	.parkingSpot{
+		flex-direction: column;
+		border: none;
+		padding: 0;
+	}
+	.parkingInfo{
+		border-bottom: 2px solid black;
+	}
+	.parkingDetails{
+		flex-direction: column;
+	}
+	.parkingDetailsContent{
+		flex: none;
+		width: 100%;
+	}
+	.parkingImage{
+		flex: none;
+		width: 100%;
+	}
+	.reviwer{
+		width: 100%;
+	}
+	.registerBox{
+		width: 80%;
+	}
+	.selectDropdown{
+		width: 100%;
+	}
+}

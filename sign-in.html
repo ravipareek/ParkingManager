@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Sign In</title>
+<!-- Body is a flex so header, and footer are at the top and bottom of pages -->
+<body>
+	<!-- Header to have a logo and my app name -->
+	<header id="login">
+		<div class="logo">
+			<img src="res/parking_icon.png" width="50" height="50" alt="Parking Manager Logo">
+		</div>
+		<div class="appName">
+			<h1>Parking Manager</h1>
+		</div>
+	</header>
+	<!-- Centering my signin box both vertically and horizontally -->
+	<div class="centered">
+		<div>
+			<!-- Form which will go to the submit a spot page -->
+			<form action="submission.html">
+				<div class="registerBox">
+					<!-- Get email and password from user -->
+					<h1>Sign In</h1>
+					<label for="email"><b>Email</b></label><br>
+					<input type="email" placeholder="Enter Email" id="email" required> <br>
+					<label for="password"><b>Password</b></label><br>
+					<input type="password" placeholder="Enter Password" id="password" required><br>
+					<input type="submit" class="register-button" value="Sign In">
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<h4>Pareek Ravi - ravip2</h4>
+	</footer>
+</body>
+</html> 

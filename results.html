@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Results</title>
+<!-- Body is a flex so header, and footer are at the top and bottom of pages -->
+<body>
+	<div>
+		<!-- Header to have a logo and my app name -->
+		<header>
+			<div class="logo">
+				<img src="res/parking_icon.png" width="50" height="50" alt="Parking Manager Logo">
+			</div>
+			<div class="appName">
+				<h1>Parking Manager</h1>
+			</div>
+		</header>
+		<!-- The navigation menu -->
+		<nav>
+			<!-- This is in a flex box directioned by row -->
+			<div class="topnav">
+				<!-- Left nav to the left -->
+				<div class="leftNav">
+			  		<a href="submission.html" title="Post a Spot">Post a Spot</a>
+			  		<a href="profile.html" title="Profile">Profile</a>
+			  		<a class="active" href="search.html" title="Search">Search</a>
+		  		</div>
+		  		<!-- Left nav to the right -->
+		  		<div class="rightNav">
+		  			<a id="logout" href="sign-in.html">Logout</a>
+		  		</div>
+	  		</div>
+		</nav>
+		<!-- A flex box to seperate items into left and right columns -->
+		<div class="centered">
+			<!-- Ability to update the search -->
+			<!-- This is on the left of the flex box -->
+			<div class="updateSearch">
+				<form action="results.html">
+					<div class="searchbox">
+						<div>
+					<label for="searchBar"><b>Location</b></label> <br>
+					<input type="search" id="searchBar" placeholder="Location of parking spot">
+					<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location"><br>
+					<hr>
+					<label for="distance"><b>Distance from Current Location</b></label><br>
+					0
+  					<input type="range" id="dist" value="5" min="0" max="10" step="0.01" class="slider">
+  					10 km
+  					<output id="distance"></output><br>
+  					<hr>
+  					<!-- Displaying the prices so the labels match with the inputs -->
+					<div class="" ="priceTable">
+						<div class="col">
+							<label for="minPrice" id="minPriceLabel"><b>Min Price ($)</b></label><br>
+							<input type="number" id="minPrice" step="0.01">
+						</div>
+						<div class="col">
+							<label for="maxPrice" id="maxPriceLabel"><b>Max Price ($)</b></label><br>
+							<input type="number" id="maxPrice" step="0.01">
+						</div>
+					</div>
+					<hr>
+					<div class="selectDropdown">
+						<label for="rating"><b>Min Rating</b></label>
+						<select id="rating">
+							<option value="0">Any</option>
+							<option value="1">1 star</option>
+							<option value="2">2 star</option>
+							<option value="3">3 star</option>
+							<option value="4">4 star</option>
+							<option value="5">5 star</option>
+						</select>
+					</div>
+					<div class="selectDropdown">
+						<label for="type"><b>Type of Spot</b></label>
+						<select id="type">
+							<option value="Any">Any</option>
+							<option value="Outdoor">Outdoor</option>
+							<option value="Underground">Underground</option>
+							<option value="Private">Private</option>
+						</select>
+					</div>
+				</div>
+				<input type="submit" class="register-button" value="Search">
+			</div>
+				</form>
+			</div>
+			<!-- This is the right side of the flex -->
+			<!-- This is also a vertical flexbox -->
+			<div class="results">
+				<!-- Top view of the flex -->
+				<div class="mapView">
+					<img src="res/map_view.png" id="map" alt="Map of parking results">
+				</div>
+				<hr>
+				<!-- Bottom view of the flex -->
+				<div class="tableView">
+					<!-- The div is inside here because javascript is not allowed, this is only for now -->
+					<a href="parking.html">
+						<div class="parkingSpot">
+							<img src="res/parking_spot1.jpg" style="margin: 10px 10px;" width="150" height="150" alt="Image of parking spot for result 1">
+							<div class="parkingInfo">
+								<h3>Parking spot at Lot M</h3>
+								<h4>Distance: 4.53 KM</h4>
+								<h4>Location: (43.260879,-79.91922540000002)</h4>
+								<hr>
+								<p class="desciption">A wonderful spot that is walking distance to McMaster University. There is also a shuttle bus 2 minutes away which goes directly to the campus and stops at thode library.</p>
+							</div>
+							<div class="parkingCostRating">
+								<h3>$7</h3>
+								<h4>★★★★</h4>
+							</div>
+						</div>
+					</a>
+					<div class="parkingSpot">
+						<img src="res/parking_spot2.jpg" style="margin: 10px 10px" width="150" height="150" alt="Image of parking spot for result 2">
+						<div class="parkingInfo">
+							<h3>Parking spot at Square One</h3>
+							<h4>Distance: 28.8 KM</h4>
+							<h4>Location: (43.58916431 -79.638997444)</h4>
+							<hr>
+							<p class="desciption">Parking spot available at square one</p>
+						</div>
+						<div class="parkingCostRating">
+							<h3>$20</h3>
+							<h4>★★★★★</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<h4>Pareek Ravi - ravip2</h4>
+		</footer>
+	</div>
+</body>
+</html>
