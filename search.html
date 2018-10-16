@@ -38,14 +38,19 @@
 			<div class="registerBox">
 				<div>
 					<label for="searchBar"><b>Location</b></label> <br>
-					<input type="search" id="searchBar" placeholder="Location of parking spot">
-					<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location"><br>
+					<div class="sliderContainer">
+						<input type="search" id="searchBar" placeholder="Location of parking spot">
+						<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location">
+					</div>
+					<br>
 					<hr>
 					<label for="distance"><b>Distance from Current Location</b></label><br>
-					0
-  					<input type="range" id="dist" value="5" min="0" max="10" step="0.01" class="slider">
-  					10 km
-  					<output id="distance"></output><br>
+					<div class="sliderContainer">
+						<p class="textRange">0</p>
+	  					<input type="range" id="dist" value="5" min="0" max="10" step="0.01" class="slider">
+	  					<p class="textRange">10 km</p>
+	  					<output id="distance"></output><br>
+  					</div>
   					<hr>
   					<!-- Displaying the prices so the labels match with the inputs -->
 					<div class="" ="priceTable">
