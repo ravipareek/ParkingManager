@@ -2,6 +2,9 @@ Pareekshit Ravi
 ravip2
 001407109
 
+register.html is the first page
+Also available at http://pareekravi.com/ParkingManager/register
+
 Bonous 1 and Bonous 2 have been completed
 
 I have used two different sizes of the logo image. The images have different resolutions which allow them to not need to be altered too much based on the display they are being viewed on. It is important to have different versions because for images which are not very high resulution, but are then viewed on a high res display. This will cause the image to be too small to even see and is not useful. 
