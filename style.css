@@ -109,7 +109,7 @@ body{
 /*all captions for the images*/
 figcaption{
 	text-align: center; 
-	padding-top: 10px;
+	margin-top: 5px;
 }
 /*creating a border and centering the elements in the div*/
 .registerBox{
@@ -309,16 +309,23 @@ textarea{
 	float: left;
 	width: 30%;
 }
+.spotVideo{
+	margin: 0 auto;
+	width: 98%; 
+}
+figure{
+	margin: 0 auto;
+}
 /*make parking image sized properly*/
 .parkingPic{
-	margin-top: 30px;
+	margin-top: 5px;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
 	max-width: 90%;
-	max-height: 60%;
-	width: auto;
-	height: auto;
+	max-height: 100%;
+	/*width: auto;*/
+	/*height: auto;*/
 }
 /*have information of spot in right*/
 .parkingDetailsContent{
@@ -366,6 +373,7 @@ textarea{
 	border-radius: 10px;
 	padding: 5px;
 	margin: 10px;
+	padding-bottom: 20px;
 }
 /*have the reviewer info on left*/
 .reviwer{
