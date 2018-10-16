@@ -114,15 +114,14 @@ figcaption{
 /*creating a border and centering the elements in the div*/
 .registerBox{
 	padding: 20px;
-	margin: auto;
-	margin-top: 12%;
-	margin-left: 10%;
+	margin: 0 auto;
+	margin-top: 8%;
 	overflow-x: hidden;
 	overflow-y: auto; 
 	border: 4px solid #33a5ff;
 	border-radius: 10px;
   	background: #e9e9e9; 
-  	width: 100%;
+  	width: 20%;
   	height: 100%;
 }
 /*setting the flex value to 1 to have even flex with imageRight*/
@@ -180,16 +179,16 @@ figcaption{
 }
 /*style the button*/
 .register-button{
+	margin: 0 auto; 
 	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-left: 40%;
 	background-color: #008CBA; /* Blue */
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     border-radius: 4px;
     font-size: 16px;
     transition-duration: 0.4s;
@@ -230,19 +229,25 @@ figcaption{
     opacity: 1; /* Fully shown on mouse-over */
 }
 
+/*Dont all ow them to resize text*/
 textarea{
 	resize: none;
 }
-
+/*have update search on the left*/
 .updateSearch{
 	width: 30%;
 	float: left;
 }
+/*Box different dimensions*/
+.updateBox{
+		width: 80%;
+}
+/*show results on the left*/
 .results{
 	float: right;
 	width: 60%;
 }
-
+/*Each parking spot will have its own border and style*/
 .parkingSpot{
 	margin-top: 5px;
 	margin-right: 5px;
@@ -253,23 +258,28 @@ textarea{
 	border-radius: 10px;
 	background: #e9e9e9;
 }
+/*Information of the spot*/
 .parkingInfo{
 	justify-content: flex-start;
 }
+/*Image of the map div*/
 .mapview{
 	margin: auto;
 	width: 50%;	
 	display: inline-block;
 }
+/*Image itself*/
 #map{
 	display: block;
 	margin: 10px auto;
 }
+/*Div for cost and rating*/
 .parkingCostRating{
 	float: right;
 	margin-left: auto;
 	justify-content: flex-end;
 }
+/*Search*/
 .searchbox{
 	border: 4px solid #33a5ff;
 	border-radius: 10px;
@@ -486,7 +496,7 @@ textarea{
 		width: 100%;
 	}
 	.registerBox{
-		width: 80%;
+		width: 30%;
 		margin: 5% auto; 
 	}
 	.selectDropdown{
@@ -510,7 +520,9 @@ textarea{
 		width: 95%;
 		padding-bottom: 1%;
 	}
-
+	#sign-in{
+		width: 50%;
+	}
 }
 @media only screen and (max-width: 800px) {
 	#topFlex{
@@ -520,7 +532,7 @@ textarea{
 		width: 100%;
 	}
 	.register-button{
-		margin-left: 30%
+		margin-left: 20%
 	}
 	.profileContainer{
 		flex-direction: column;
@@ -551,10 +563,16 @@ textarea{
 		width: 100%;
 	}
 	.registerBox{
-		width: 80%;
+		width: 30%;
 		margin: 5% auto; 
 	}
 	.selectDropdown{
 		width: 100%;
+	}
+	#sign-in{
+		width: 50%;
+	}
+	.updateBox{
+		width: 80%;
 	}
 }
