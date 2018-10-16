@@ -35,7 +35,7 @@ a{
 }
 /*leave the decription size the way it is*/
 .description{
-	resize: false;
+	resize: none;
 }
 /*the navigation bar*/
 .topnav {
@@ -208,8 +208,7 @@ figcaption{
 /*change the icon to a blue version*/
 /*this is currently not working without javascript*/
 #locationButton:active{
-	image-rendering: url("res/location_icon.png"); 
-	/*background-color: red;*/
+	background: url("res/location_icon.png"); 
 }
 /*Make the slider and the texts fit in the same line*/
 .sliderContainer{
@@ -279,7 +278,7 @@ textarea{
 	margin-left: auto;
 	justify-content: flex-end;
 }
-/*Search*/
+/*Search box borders*/
 .searchbox{
 	border: 4px solid #33a5ff;
 	border-radius: 10px;
@@ -289,7 +288,7 @@ textarea{
 	padding: 5px;
 	display: block;
 }
-
+/*Display details in flex row*/
 .parkingDetails{
 	background: #e9e9e9;
 	width: 85%;
@@ -299,15 +298,18 @@ textarea{
 	flex-direction: row;
 	margin: 0 auto;
 }
+/*wrapper of parking image and info*/
 .parkingWrapper{
 	flex: 1;
 	margin: 0 auto;
 }
+/*have map and image of spot on left*/
 .parkingImage{
 	flex: 1;
 	float: left;
 	width: 30%;
 }
+/*make parking image sized properly*/
 .parkingPic{
 	margin-top: 30px;
 	margin-left: auto;
@@ -318,11 +320,14 @@ textarea{
 	width: auto;
 	height: auto;
 }
+/*have information of spot in right*/
 .parkingDetailsContent{
 	float: right;
 	flex: 1;
 	width: 55%;
 }
+/*button to edit if wanted*/
+/*could change this to a book depending on user*/
 .editButton{
 	float: right;
 	margin-right: 20px;
@@ -336,37 +341,43 @@ textarea{
     background-position: right;
     background-size: contain;
 }
-
+/*shadow effect when hovering over it*/
+/*indicates that user is in correct location*/
 .editButton:hover{
 	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
+/*table layout for information*/
+/*border around table*/
 .parkingDetailsTable{
 	border: 2px solid #33a5ff;
 }
+/*border on each cell*/
 .parkingDetailsTable td{
 	border: 2px solid #33a5ff;
 	padding: 5px;
 }
+/*nothing for now*/
 .parkingReviewTable{
 
 }
+/*each review has a border*/
 .parkingReview{
 	border: 4px solid #33a5ff;
 	border-radius: 10px;
 	padding: 5px;
 	margin: 10px;
 }
-
+/*have the reviewer info on left*/
 .reviwer{
 	float: left;
 	padding-right: 10px;
 }
-
+/*Flex to have picture on left and listing on right*/
 .profileContainer{
 	display: flex;
 	flex-direction: row;
 }
+/*border and sizing of image*/
 .profilePicture{
 	height: 90%;
 	width: 80%;
@@ -374,12 +385,14 @@ textarea{
 	margin: 0 auto;
 	padding: 20px;
 }
+/*image of reviewer*/
 .reviewer{
 	height: 150px;
 	width: 150px;
 	padding: 0px;
 
 }
+/*Profile details (picture + info) bordered*/
 .floatProfileSection{
 	border: 4px solid #33a5ff;
 	border-radius: 10px;
@@ -392,7 +405,7 @@ textarea{
 	width: 98%;
 	height: 100%
 }
-
+/*Available and	Occuiped Listings on profile page */
 .listings{
 	float: right;
 	max-width: 75%;
@@ -402,59 +415,63 @@ textarea{
 	padding: 30px;
 	margin: 20px;
 }
-
+/*Listing spot name*/
 .spotHeader{
 	display: inline-block;
 }
-
+/*Listing spot price*/
 .price{
 	margin: -10px auto;
 }
+/*Search box price table to align min price and max price with labels*/
 .priceTable{
+	width: 100%;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
 }
-
+/*column with min label and box*/
 .col{
+	width: 50%;
 	display: flex;
-	flex: column;
+	flex-direction: column;
 	text-align: center;
 }
+/*input box*/
 #minPrice{
 	flex: 1;
 	margin-left: 1%;
 }
-
+/*input box*/
 #maxPrice{
 	flex: 1;
 	margin-left: 1%;
 }
-
-#minPriceLabel{
-	/*flex: 1;*/
-}
-
-#maxPriceLabel{
-	/*flex: 1;*/
-}
-
+/*dropdowns in search*/
 .selectDropdown{
 	display: inline-block;
 }
-
+/*search text box*/
 #searchBar{
 	width: 95%;
 }
+/*distance slider*/
 #dist{
 	flex: 1;
 	width: 100%;
 }
+/*start and end of dist slder texts*/
 .textRange{
-	flex: -1;
+	/*set no flex value*/
 }
+/*contain the slider so the texts are on either and of the slider and slider fills remaining area*/
 .sliderContainer{
 	display: flex;
 	flex-direction: row;
+}
+/*specific with for the search box*/
+#searchBox{
+	width: 50%;
 }
 
 @media only screen and (max-device-width: 900px) {
