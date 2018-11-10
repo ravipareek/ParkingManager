@@ -3,6 +3,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
+
 <title>Sign In</title>
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
 <body>
@@ -22,7 +24,7 @@
 	<div class="centered">
 		<div>
 			<!-- Form which will go to the submit a spot page -->
-			<form action="submission.html">
+			<form action="submission.html" onsubmit="validateRegister(this)">
 				<div class="registerBox" id="sign-in">
 					<!-- Get email and password from user -->
 					<h1>Sign In</h1>

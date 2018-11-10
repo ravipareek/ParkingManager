@@ -3,6 +3,7 @@
 <meta charset="utf-8"/>	
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
 <title>Search...</title>
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
 <body>
@@ -36,14 +37,14 @@
 	</nav>
 	<!-- Keep the search box centered on the page -->
 	<div class="centered">
-		<form action="results.html">
+		<form>
 			<!-- Get the location they want to search along with all other inputs -->
 			<div class="registerBox" id="searchBox">
 				<div>
 					<label for="searchBar"><b>Location</b></label> <br>
 					<div class="sliderContainer">
-						<input type="search" id="searchBar" placeholder="Location of parking spot">
-						<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location">
+						<input type="search" id="searchBar" placeholder="Location of parking spot - (longitude,latitude)">
+						<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location" onclick="getLocation();return false;">
 					</div>
 					<br>
 					<hr>
@@ -88,7 +89,7 @@
 						</select>
 					</div>
 				</div>
-				<input type="submit" class="register-button" value="Search">
+				<input type="submit" class="register-button" value="Search" formaction="results.html">
 			</div>
 		</form>
 	</div>

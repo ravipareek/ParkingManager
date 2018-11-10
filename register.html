@@ -3,6 +3,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
 
 <meta name="mobile-web-app-capable" content="yes">
 <!-- Mobile Home Screen App -->
@@ -39,18 +40,18 @@
 	<!-- Centering my signin box both vertically and horizontally -->
 	<div class="centered">
 		<!-- Form which will go to the submit a spot page -->
-		<form action="submission.html">
+		<form  action="submission.html" onsubmit="return validateRegister(this)">
 			<div class="registerBox">
 				<!-- Get name, email, password, confirm the password and what type of user they are -->
 				<h1>Register</h1>
 				<label for="name"><b>Name</b></label><br>
-				<input type="text" placeholder="Enter Full Name" id="name" required> <br>
+				<input type="text" placeholder="Enter Full Name" id="name"> <br>
 				<label for="email"><b>Email</b></label><br>
-				<input type="email" placeholder="Enter Email" id="email" required> <br>
+				<input type="text" placeholder="Enter Email" id="email" > <br>
 				<label for="password"><b>Password</b></label><br>
-				<input type="password" placeholder="Enter Password" id="password" required><br>
+				<input type="text" placeholder="Enter Password" id="password" ><br>
 				<label for="password-repeat"><b>Repeat Password</b></label><br>
-				<input type="password" placeholder="Repeat Password" id="password-repeat" required><br>
+				<input type="text" placeholder="Repeat Password" id="password-repeat" ><br>
 				<input type="checkbox" name="user-type" value="owner">I am a parking lot owner<br>
 				<input type="checkbox" name="user-type" value="driver">I am a driver<br>
 				<input type="submit" class="register-button" value="Register"><br>
