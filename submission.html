@@ -3,6 +3,8 @@
 <meta charset="utf-8"/>	
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
+
 <title>Submit Parking</title>
 <body>
 	<header>
@@ -30,23 +32,24 @@
 	</nav>
 	<!-- center box -->
 	<div class="centered">
-		<form action="parking.html">
+		<form action="parking.html" onsubmit="return validateSubmit(this)">
 			<div id="submissionBox" class="registerBox">
 				<!-- Flex of form data -->
 				<div id="topFlex">
 					<!-- flex of data entry -->
 					<div class="formLeft">
 						<label for="name"><b>Spot Name</b></label><br>
-						<input type="text" placeholder="Enter a name for the spot" id="name" required> <br>
+						<input type="text" placeholder="Enter a name for the spot" id="name" name="name" required> <br>
 						<label for="description"><b>Description</b></label><br>
-						<textarea id="description" placeholder="Enter a description" cols="30" rows="5"></textarea> <br>
+						<textarea id="description" placeholder="Enter a description" cols="30" rows="5" name="description" required></textarea> <br>
 						<label for="type"><b>Type of Spot</b></label>
-						<select id="type">
+						<select id="type" required>
+							<option value="none">None</option>
 							<option value="Outdoor">Outdoor</option>
 							<option value="Underground">Underground</option>
 							<option value="Private">Private</option>
 						</select> <br>
-						<label for="lat"><b>Latutude</b></label><br>
+						<label for="lat"><b>Latitude</b></label><br>
 						<input type="number" placeholder="Enter the latitude" id="lat" required step="0.00001"> <br>
 						<label for="lon"><b>Longitude</b></label><br>
 						<input type="number" placeholder="Enter the longitude" id="lon" required step="0.00001"> <br>
@@ -55,7 +58,7 @@
 					<div class="imageRight">
 						<label for="image"><b>Upload an image</b></label>
 						<input type="file" id="image" accept="image/*" required> <br> <br>
-						<label for="video"><b>Upload an video</b>(Optional)</label>
+						<label for="video"><b>Upload a video</b> (Optional)</label>
 						<input type="file" id="video" accept="video/*">
 					</div>
 				</div>

@@ -87,9 +87,18 @@
 
 
 <link rel="stylesheet" type="text/css" href="style.css">
+<!--Map related css and js-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+	  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
+
+<script src="script.js"></script>
 <title>Parking Spot Details</title>
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
-<body>
+<body onload="makeMapIndividual()">
 	<!-- Header to have a logo and my app name -->
 	<header>
 		<div class="logo">
@@ -128,7 +137,9 @@
 				<video class="spotVideo" controls>
 					<source src="res/sample.mp4" type="video/mp4">
 				</video><hr>
-				<img src="res/lotM.jpg" class="parkingPic" alt="Map of location of Lot M">
+				<div class="mapView" id="mapId">
+					<!--<img src="res/lotM.jpg" class="parkingPic" alt="Map of location of Lot M">-->
+				</div>
 			</div>
 			<div class="parkingDetailsContent">
 				<h1 id="spotHeader">Parking spot at Lot M</h1>

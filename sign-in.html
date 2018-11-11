@@ -24,14 +24,14 @@
 	<div class="centered">
 		<div>
 			<!-- Form which will go to the submit a spot page -->
-			<form action="submission.html" onsubmit="validateRegister(this)">
+			<form action="search.html" onsubmit="validateRegister(this)" method="post">
 				<div class="registerBox" id="sign-in">
 					<!-- Get email and password from user -->
 					<h1>Sign In</h1>
 					<label for="email"><b>Email</b></label><br>
-					<input type="email" placeholder="Enter Email" id="email" required> <br>
+					<input type="email" placeholder="Enter Email" id="email" name="email" required> <br>
 					<label for="password"><b>Password</b></label><br>
-					<input type="password" placeholder="Enter Password" id="password" required><br>
+					<input type="password" placeholder="Enter Password" id="password" name="password" required><br>
 					<input type="submit" class="register-button" value="Sign In">
 				</div>
 			</form>
