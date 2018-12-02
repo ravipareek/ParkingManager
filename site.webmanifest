@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "register.html",
+    "start_url": "register.php",
     "theme_color": "#33a5ff",
     "background_color": "#33a5ff",
     "orientation": "portrait",

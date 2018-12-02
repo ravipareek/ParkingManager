@@ -19,6 +19,7 @@ function modifyOffset(slider) {
     outputTag.innerHTML        = slider.value;
 }
 
+//from W3Schools
 function getLocation(){
     //access location
     if (navigator.geolocation) {
@@ -27,6 +28,8 @@ function getLocation(){
         alert("Geolocation is not supported by this browser.");
     }
 }
+
+//from W3Schools
 //set position in text field
 function showPosition(position) {
     document.getElementById('searchBar').value = position.coords.longitude + "," + position.coords.latitude;
@@ -53,7 +56,7 @@ function validateSubmit(form){
         alert("Please enter a valid latitude");
         return false;
     }
-
+    //Check if user has selected type of spot
     if(form.type.value === "none"){
         alert("Please enter a valid type");
         return false;
@@ -67,6 +70,27 @@ function validateSubmit(form){
     return true;
 }
 
+function validateSignIn(form) {
+    const emailRegex = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
+    //check if user entered an email
+    if (!form.email.value){
+        alert("Please enter an email");
+        return false;
+    }
+    //email matches regex
+    if (!form.email.value.match(emailRegex)){
+        alert("Please enter a valid email");
+        return false;
+    }
+    //check if user entered an password
+    if (!form.password.value){
+        alert("Please enter a password");
+        return false;
+    }
+
+    return true;
+
+}
 
 function validateRegister(form){
     //regular expression for email
@@ -194,10 +218,10 @@ function makeMap() {
     }).addTo(myMap);
     // create marker
     var marker = L.marker([43.26,-79.919]).addTo(myMap);
-    marker.bindPopup("Lot M parking spot <br> Price: $7 <br> <a href='parking.html'>Details</a>");
+    marker.bindPopup("Lot M parking spot <br> Price: $7 <br> <a href='parking.php'>Details</a>");
     // create marker
     var marker = L.marker([43.257985, -79.913611]).addTo(myMap);
-    marker.bindPopup("1150 Hamilon RR 8 <br> Price: $20 <br> <a href='parking.html'>Details</a>");
+    marker.bindPopup("1150 Hamilon RR 8 <br> Price: $20 <br> <a href='parking.php'>Details</a>");
 
 }
 
