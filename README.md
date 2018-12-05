@@ -6,5 +6,4 @@ ravip2
 
 URL - https://4ww3.pareekravi.com/
 
-I have left in the required tags in the form elements because they are HTML5 attributes
-
+There is a flat rate of $5 for all parking spots in this app

@@ -99,6 +99,38 @@ include('head.php');
 }
 </script>
 
+
+<?php
+//    if (isset($_POST['submit'])){
+
+    echo '<script>console.log("Reached")</script>';
+
+        $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
+
+//        $name = .$_POST['name']
+//       $description = .$_POST['description']
+//        $type = .$_POST['type']
+//       $longitude = .$_POST['long']
+//        $latitude = .$_POST['lat']
+
+         $name = "McMaster"
+         $description = "Spot on Campus"
+         $type = "Outdoor"
+         $longitude = -50
+         $latitude = 50
+
+        $sql = 'INSERT INTO parkingSpot(name, description, latitude, longitude, type) VALUES(:name, :description, :lat, :long, :type)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':description', description);
+        $stmt->bindValue(':lat', $latitude);
+        $stmt->bindValue(':long', $longitude);
+        $stmt->bindValue(':type', $type);
+
+        $stmt->execute();
+//    }
+?>
+
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
 <body onload="makeMapIndividual()">
 	<!-- Header to have a logo and my app name -->
