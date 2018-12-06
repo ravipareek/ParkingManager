@@ -1,6 +1,7 @@
 <?php
-$PageTitle="Search...";
-include('head.php');
+session_start();
+	$PageTitle="Search...";
+	include('head.php');
 ?>
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
 <body>
@@ -10,10 +11,14 @@ include('head.php');
     ?>
 	<!-- Keep the search box centered on the page -->
 	<div class="centered">
-		<form action="results.php" onsubmit="return validateSearch(this)">
+		<form action="results.php" method="post" onsubmit="return validateSearch(this)">
 			<!-- Get the location they want to search along with all other inputs -->
 			<div class="registerBox" id="searchBox">
 				<div>
+					<label for="searchBar"><b>Name</b></label> <br>
+					<div class="">
+						<input type="text" id="searchNameBar" name="name" placeholder="Name of parking spot">
+					</div>
 					<label for="searchBar"><b>Location</b></label> <br>
 					<div class="sliderContainer">
 						<input type="search" id="searchBar" name="location" placeholder="Location of parking spot - (longitude,latitude)">
@@ -33,17 +38,17 @@ include('head.php');
 					<div class="priceTable">
 						<div class="col">
 							<label for="minPrice" id="minPriceLabel"><b>Min Price ($)</b></label><br>
-							<input type="number" name="min" id="minPrice" step="0.01" min="0">
+							<input type="number" name="minPrice" id="minPrice" step="0.01" min="0">
 						</div>
 						<div class="col">
 							<label for="maxPrice" id="maxPriceLabel"><b>Max Price ($)</b></label><br>
-							<input type="number" name="max" id="maxPrice" step="0.01" min="0">
+							<input type="number" name="maxPrice" id="maxPrice" step="0.01" min="0">
 						</div>
 					</div>
 					<hr>
 					<div class="selectDropdown">
 						<label for="rating"><b>Min Rating</b></label>
-						<select id="rating">
+						<select id="rating" name="minRating">
 							<option value="0">Any</option>
 							<option value="1">1 star</option>
 							<option value="2">2 star</option>
@@ -54,7 +59,7 @@ include('head.php');
 					</div>
 					<div class="selectDropdown">
 						<label for="type"><b>Type of Spot</b></label>
-						<select id="type">
+						<select id="type" name="type">
 							<option value="Any">Any</option>
 							<option value="Outdoor">Outdoor</option>
 							<option value="Underground">Underground</option>
@@ -62,7 +67,7 @@ include('head.php');
 						</select>
 					</div>
 				</div>
-				<input type="submit" class="register-button" value="Search">
+				<input type="submit" class="register-button" name="search" value="Search">
 			</div>
 		</form>
 	</div>

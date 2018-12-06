@@ -28,7 +28,7 @@ include('head.php');
 	<!-- Centering my signin box both vertically and horizontally -->
 	<div class="centered">
 		<!-- Form which will go to the submit a spot page -->
-		<form  action="search.php" onsubmit="return validateRegister(this)" method="post">
+		<form  action="sign-in.php" onsubmit="return validateRegister(this)" method="post">
 			<div class="registerBox">
 				<!-- Get name, email, password, confirm the password and what type of user they are -->
 				<h1>Register</h1>
@@ -40,9 +40,9 @@ include('head.php');
 				<input type="password" placeholder="Enter Password" id="password" name="password" required><br>
 				<label for="password-repeat"><b>Repeat Password</b></label><br>
 				<input type="password" placeholder="Repeat Password" id="password-repeat" name="password-repeat" required><br>
-				<input type="checkbox" name="user-type" value="owner">I am a parking lot owner<br>
-				<input type="checkbox" name="user-type" value="driver">I am a driver<br>
-				<input type="submit" class="register-button" value="Register"><br>
+				<input type="checkbox" name="user-type[]" value="owner">I am a parking lot owner<br>
+				<input type="checkbox" name="user-type[]" value="driver">I am a driver<br>
+				<input type="submit" class="register-button" value="Register" name="register"><br>
 				<!-- Way to sign in if already have an account -->
 				<div id="existingAccount">
 					<label ><b>Already have an account?</b></label> <br>
