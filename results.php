@@ -1,4 +1,5 @@
 <?php
+session_start();
 $PageTitle="Results";
 function customPageHeader(){?>
 <!--Map related css and js-->
@@ -13,12 +14,13 @@ function customPageHeader(){?>
 include('head.php');
 ?>
 <!-- Body is a flex so header, and footer are at the top and bottom of pages -->
-<body onload="makeMap()">
+<body>
 	<div>
 		<!-- Header to have a logo and my app name -->
         <?php
             include('navBar.php');
         ?>
+    </div>
 		<!-- A flex box to seperate items into left and right columns -->
 		<div class="centered">
 			<!-- Ability to update the search -->
@@ -84,49 +86,105 @@ include('head.php');
 			<!-- This is also a vertical flexbox -->
 			<div class="results">
 				<!-- Top view of the flex -->
-				<div class="mapView" id="mapId">
-					<!--<img src="res/map_view.png" id="map" alt="Map of parking results">-->
-				</div>
-				<hr>
-				<!-- Bottom view of the flex -->
-				<div class="tableView">
-					<!-- The div is inside here because javascript is not allowed, this is only for now -->
-					<a href="parking.php">
-						<div class="parkingSpot">
+			<?php	
+			echo('<div class="mapView" id="mapId">');
+			echo('</div>');
+			echo('<hr>');
+			// <!-- Bottom view of the flex -->
+			echo('<div class="tableView">');
+
+
+				if (isset($_POST["search"])){
+			       $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
+
+			       $name = $_POST["name"];
+			       // $name = "";
+			       $location = $_POST["location"];
+			       $distance = $_POST["distance"];
+			       // $distance = 10000000000000000;
+			       $minPrice = $_POST["minPrice"];
+			       $maxPrice = $_POST["maxPrice"];
+			       $minRating = $_POST["minRating"];
+			       $type = $_POST["type"];
+
+			       list($current_longitude, $current_latitude) = explode(',', $location);
+
+			       echo "<script>
+
+						console.log('Map');
+
+					    //hard coding longitude and latitude
+					    longitude = ",$current_longitude,";
+					    latitude = ",$current_latitude,";
+
+					    console.log(longitude + ' ' + latitude);
+
+					    //Make map square
+					    var mapElement = document.getElementById('mapId');
+					    var mapBounds = mapElement.offsetWidth;
+					    mapElement.style.height =  (mapBounds * 0.7) + 'px';
+
+					    let token = 'sk.eyJ1IjoicGFyZWVraXRlZWtpIiwiYSI6ImNqb2RkazZ4NzEyeXEzcHJ3OXloNnhjdGkifQ.fbyzmtswUJRTNKzrVYwu2g';
+					    let myMap = L.map('mapId').setView([latitude,longitude], 15);
+
+					    //create map
+					    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+					        attribution: 'Map data &copy; <a href=\'https://www.openstreetmap.org/\'>OpenStreetMap</a> contributors, <a href=\'https://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>, Imagery © <a href=\'https://www.mapbox.com/\'>Mapbox</a>',
+					        maxZoom: 20,
+					        id: 'mapbox.streets',
+					        accessToken: token
+					    }).addTo(myMap);
+
+				    </script>";
+
+			       try{
+				        $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
+						$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						// print_r("Reached");
+						$result = $pdo->query("SELECT parkingSpot.pid from parkingSpot inner join review on parkingSpot.pid = review.pid where parkingSpot.name like '%$name%' and parkingSpot.price between '$minPrice' and '$maxPrice' and parkingSpot.type = type and 111.111 * DEGREES(ACOS(LEAST(COS(RADIANS(parkingSpot.latitude)) * COS(RADIANS('$current_latitude')) * COS(RADIANS(parkingSpot.longitude - ('$current_longitude'))) + SIN(RADIANS(parkingSpot.latitude)) * SIN(RADIANS(parkingSpot.latitude)), 1.0))) < '$distance' group by parkingSpot.pid having avg(review.rating) > '$minRating' ");
+						// 
+						// print_r($result->fetchAll());
+						foreach ($result as $spots) {
+							$pid = $spots['pid'];
+							$parkingSpotResults = $pdo->query("SELECT * from parkingSpot where pid = '$pid'");
+							foreach ($parkingSpotResults as $ROW) {
+								$ratingResult = $pdo->query("SELECT avg(rating) FROM review WHERE pid= '$pid'");
+								$avgRating = round($ratingResult->fetchAll()[0][0],5);
+
+								$distanceBetween = 111.111 * rad2deg(ACOS(min(COS(deg2rad($ROW['latitude'])) * COS(deg2rad('$current_latitude')) * COS(deg2rad($ROW['longitude'] - ('$current_longitude'))) + SIN(deg2rad($ROW['latitude'])) * SIN(deg2rad($ROW['latitude'])), 1.0)));
+
+							    echo "<script>
+
+								    // create marker
+								    var marker = L.marker([",$ROW['longitude'],",",$ROW['latitude'],"]).addTo(myMap);
+								    marker.bindPopup('",$ROW['name']," <br> Price: $",$ROW['price']," <br> <a href=\'parking.php?parking=",$ROW['pid'],"&distanceBetween=",$distanceBetween,"\'>Details</a>');
+								</script>";
+						
+								echo '<a href="parking.php?parking=',$ROW['pid'],'&distanceBetween=',$distanceBetween,'">';
+								echo '<div class="parkingSpot">
 							<img src="res/parking_spot1.jpg" style="margin: 10px 10px;" width="150" height="150" alt="Image of parking spot for result 1">
-							<div class="parkingInfo">
-								<h3>Parking spot at Lot M</h3>
-								<h4>Distance: 4.53 KM</h4>
-								<h4>Location: (43.260879,-79.91922540000002)</h4>
-								<hr>
-								<p class="desciption">A wonderful spot that is walking distance to McMaster University. There is also a shuttle bus 2 minutes away which goes directly to the campus and stops at thode library.</p>
-							</div>
-							<div class="parkingCostRating">
-								<h3>$7</h3>
-								<h4>★★★★</h4>
-							</div>
-						</div>
-					</a>
-					<div class="parkingSpot">
-						<img src="res/parking_spot2.jpg" style="margin: 10px 10px" width="150" height="150" alt="Image of parking spot for result 2">
-						<div class="parkingInfo">
-							<h3>1150 Hamilton RR 8</h3>
-							<h4>Distance: 0.8 KM</h4>
-							<h4>Location: (43.257985, -79.913611)</h4>
-							<hr>
-							<p class="desciption">Parking spot available in driveway of 1150 Hamilton Regional Road 8</p>
-						</div>
-						<div class="parkingCostRating">
-							<h3>$20</h3>
-							<h4>★★★★★</h4>
-						</div>
-					</div>
-				</div>
+							<div class="parkingInfo">';
+								echo '<h3>',$ROW['name'],'</h3>';
+								echo '<h4> Distance: ',$distanceBetween,' km</h4>';
+								echo '<h4> Location: ',$ROW['longitude'],',',$ROW['latitude'],'</h4> <hr>';
+								echo '<p class="desciption">',$ROW['desciption'],'</p> </div>';
+								echo '<div class="parkingCostRating">';
+								echo '<h3>$',$ROW['price'],'</h3>';
+								echo '<h4> Rating: ',$avgRating,'/5</h4>';
+								echo '</div></div></a>';
+							}
+						}
+						echo ('</div>');
+					} catch (PDOException $e){
+						echo $e->getMessage();
+					}
+
+				}
+			?>
 			</div>
 		</div>
 		<?php
             include('footer.php');
         ?>
-	</div>
 </body>
 </html>

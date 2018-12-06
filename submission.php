@@ -1,6 +1,10 @@
 <?php
+session_start();
+
 $PageTitle="Submit a Spot";
 include('head.php');
+include('validateSubmission.php');
+
 ?>
 
 <body>
@@ -9,7 +13,7 @@ include('head.php');
     ?>
 	<!-- center box -->
 	<div class="centered">
-		<form action="parking.php" method="post" onsubmit="return validateSubmit(this)">
+		<form action="" method="post" onsubmit="return validateSubmit(this)" enctype="multipart/form-data">
 			<div id="submissionBox" class="registerBox">
 				<!-- Flex of form data -->
 				<div id="topFlex">
@@ -19,6 +23,8 @@ include('head.php');
 						<input type="text" placeholder="Enter a name for the spot" id="name" name="name" required> <br>
 						<label for="description"><b>Description</b></label><br>
 						<textarea id="description" placeholder="Enter a description" cols="30" rows="5" name="description" required></textarea> <br>
+						<label for="price"><b>Price</b></label><br>
+						$<input type="number" placeholder="$ Price" id="price" name="price" step="0.00" required> <br>
 						<label for="type"><b>Type of Spot</b></label>
 						<select id="type" required name="type">
 							<option value="none">None</option>

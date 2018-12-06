@@ -194,62 +194,62 @@ function validateSearch(form){
     return true;
 }
 
-function makeMap() {
-    console.log("Map");
+// function makeMap() {
+//     console.log("Map");
 
-    //hard coding longitude and latitude
-    longitude = -79.90806479;
-    latitude = 43.2585787;
+//     //hard coding longitude and latitude
+//     longitude = -79.90806479;
+//     latitude = 43.2585787;
 
-    //Make map square
-    var mapElement = document.getElementById('mapId');
-    var mapBounds = mapElement.offsetWidth;
-    mapElement.style.height =  (mapBounds * 0.7) + 'px';
+//     //Make map square
+//     var mapElement = document.getElementById('mapId');
+//     var mapBounds = mapElement.offsetWidth;
+//     mapElement.style.height =  (mapBounds * 0.7) + 'px';
 
-    let token = 'sk.eyJ1IjoicGFyZWVraXRlZWtpIiwiYSI6ImNqb2RkazZ4NzEyeXEzcHJ3OXloNnhjdGkifQ.fbyzmtswUJRTNKzrVYwu2g';
-    let myMap = L.map('mapId').setView([latitude,longitude], 15);
+//     let token = 'sk.eyJ1IjoicGFyZWVraXRlZWtpIiwiYSI6ImNqb2RkazZ4NzEyeXEzcHJ3OXloNnhjdGkifQ.fbyzmtswUJRTNKzrVYwu2g';
+//     let myMap = L.map('mapId').setView([latitude,longitude], 15);
 
-    //create map
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 20,
-        id: 'mapbox.streets',
-        accessToken: token
-    }).addTo(myMap);
-    // create marker
-    var marker = L.marker([43.26,-79.919]).addTo(myMap);
-    marker.bindPopup("Lot M parking spot <br> Price: $7 <br> <a href='parking.php'>Details</a>");
-    // create marker
-    var marker = L.marker([43.257985, -79.913611]).addTo(myMap);
-    marker.bindPopup("1150 Hamilon RR 8 <br> Price: $20 <br> <a href='parking.php'>Details</a>");
+//     //create map
+//     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//         maxZoom: 20,
+//         id: 'mapbox.streets',
+//         accessToken: token
+//     }).addTo(myMap);
+//     // create marker
+//     var marker = L.marker([43.26,-79.919]).addTo(myMap);
+//     marker.bindPopup("Lot M parking spot <br> Price: $7 <br> <a href='parking.php'>Details</a>");
+//     // create marker
+//     var marker = L.marker([43.257985, -79.913611]).addTo(myMap);
+//     marker.bindPopup("1150 Hamilon RR 8 <br> Price: $20 <br> <a href='parking.php'>Details</a>");
 
-}
+// }
 
 
-function makeMapIndividual() {
-    console.log("Map");
+// function makeMapIndividual() {
+//     console.log("Map");
 
-    //hard coding longitude and latitude
-    longitude = -79.91922540000002;
-    latitude = 43.260879;
+//     //hard coding longitude and latitude
+//     longitude = -79.91922540000002;
+//     latitude = 43.260879;
 
-    //Make map square
-    var mapElement = document.getElementById('mapId');
-    var mapBounds = mapElement.offsetWidth;
-    mapElement.style.height =  (mapBounds * 0.7) + 'px';
+//     //Make map square
+//     var mapElement = document.getElementById('mapId');
+//     var mapBounds = mapElement.offsetWidth;
+//     mapElement.style.height =  (mapBounds * 0.9) + 'px';
 
-    let token = 'sk.eyJ1IjoicGFyZWVraXRlZWtpIiwiYSI6ImNqb2RkazZ4NzEyeXEzcHJ3OXloNnhjdGkifQ.fbyzmtswUJRTNKzrVYwu2g';
-    let myMap = L.map('mapId').setView([latitude,longitude], 16);
+//     let token = 'sk.eyJ1IjoicGFyZWVraXRlZWtpIiwiYSI6ImNqb2RkazZ4NzEyeXEzcHJ3OXloNnhjdGkifQ.fbyzmtswUJRTNKzrVYwu2g';
+//     let myMap = L.map('mapId').setView([latitude,longitude], 16);
 
-    //create map
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 20,
-        id: 'mapbox.streets',
-        accessToken: token
-    }).addTo(myMap);
+//     //create map
+//     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//         maxZoom: 20,
+//         id: 'mapbox.streets',
+//         accessToken: token
+//     }).addTo(myMap);
 
-    // create marker
-    var marker = L.marker([latitude,longitude]).addTo(myMap);
-    marker.bindPopup("Lot M parking spot");
-}
+//     // create marker
+//     var marker = L.marker([latitude,longitude]).addTo(myMap);
+//     marker.bindPopup("Lot M parking spot");
+// }
