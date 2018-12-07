@@ -3,6 +3,8 @@ session_start();
 
 use Aws\S3\Exception\S3Exception;
 require('useAws.php');
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', 1);
 
 $PageTitle="Parking Spot Details";
 function customPageHeader(){?>
@@ -38,7 +40,7 @@ function customPageHeader(){?>
 <?php }
 
 include('head.php');
-
+// global variables
 $name;
 $description;
 $type;
@@ -55,37 +57,40 @@ $distanceBetween;
 	
 
 	{
-
+		// get parking id from url
 		$parkID = $_GET['parking'];
+		// geet distance from url
 		$distanceBetween = $_GET['distanceBetween'];
 		$pid = $parkID;
 
 		try {
-
+			// open db
 			$pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			// get parking spot details
 			$result = $pdo->query("SELECT * FROM parkingSpot where pid = $parkID");
 
+			// if no results found
 			if($result->rowCount() == 0){
 				// page does not exist
-				// print_r("DOES NOT EXIST");
 				header('HTTP/1.1 404 Not Found');
 				header('Location: 404.php');
 				$_GET['e'] = 404;
 				exit;
 			}
 
-
+			// get count of reviews for spot
 			$reviewResult = $pdo->query("SELECT count(rid) FROM review where pid = $parkID");
 			$reviewCount = $reviewResult->fetchAll()[0][0];
 			
-
+			// iterate through details of spot
 			foreach ($result as $ROW) {
 				$newPID = $ROW['pid'];
-
+				// get average rating of parking spot
 				$ratingResult = $pdo->query("SELECT avg(rating) FROM review WHERE pid= $newPID");
 				$avgRating = round($ratingResult->fetchAll()[0][0],2);
 
+				// extract data from query result and store in global var
 				$name = $ROW["name"];
 				$type = $ROW["type"];
 				$description = $ROW["description"];
@@ -97,13 +102,14 @@ $distanceBetween;
 
 			}
 
+			// download generic image from s3
 			$downloadedImage = $s3->getObject(array(
 				'Bucket' => 'parkingspots-pareek',
-				'Key' => "images/".$imageName
+				'Key' => "images/"
 			));
 
+			// get uri from s3 bucket + unique file name from DB
 			$imageURL =  $downloadedImage['@metadata']['effectiveUri'].$photo;
-			// echo $imageURL;
 
 		}
 		catch (PDOException $e) {
@@ -235,12 +241,33 @@ $distanceBetween;
 						</script>";
 
 					 ?>
+
 				</div>
+			<div>
+				<!-- creating a review -->
+				<form action="submitReview.php?parking=<?=$pid?>" method="post">
+					<label for="title"><b>Title</b></label><br>
+					<input type="text" id="title" name="title" placeholder="Title" required> <br>
+					<label for="review"><b>Review</b></label><br>
+					<textarea name="description" id="review" required cols="50" rows="5"></textarea>
+					<div class="selectDropdown">
+						<label for="rating"><b>Rating</b></label>
+						<select id="rating" name="rating">
+							<option value="0">0 star</option>
+							<option value="1">1 star</option>
+							<option value="2">2 star</option>
+							<option value="3">3 star</option>
+							<option value="4">4 star</option>
+							<option value="5">5 star</option>
+						</select>
+					</div>
+					<input type="submit" name="review" class="register-button" value="Submit">
+				</form>
 			</div>
+			</div>
+			
 			<div class="parkingDetailsContent">
 				<h1 id="spotHeader"><?php echo($name)?></h1>
-				<!-- Using it this way even though this is not the correct way. Since we cannot use javascript, I am doing it this way -->
-				<a href="submission.php"><button class="editButton" title="Edit"></button></a>
 				<!-- get php price variable -->
 				<h2 id="price">$<?php echo($price)?></h2>
 				<!-- get php rating information -->

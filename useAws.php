@@ -5,16 +5,11 @@
 	use Aws\Exception\AwsException;
 
 
-
-	// error_reporting(E_ALL);
- //  	ini_set('display_errors', 1);
+	// location of credential files
 
   	putenv('HOME=/var/www/4ww3');
 	require 'vendor/autoload.php';
-	// $config = require('config.php');
-	// echo "Init AWS 		";
-
-
+	// creating the s3 client with information
 	try{
 		$s3 = S3Client::factory(array(
 			'region' => 'us-east-2',
@@ -22,7 +17,7 @@
 			'profile' => 'default'
 		));
 	}catch(Exception $e){
-		echo $e;
+		// echo $e;
 	}
 	// echo "S3";
 ?>

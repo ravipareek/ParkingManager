@@ -1,5 +1,7 @@
 <?php
 session_start();
+	// error_reporting(E_ALL);
+	// ini_set('display_errors', 1);
 $PageTitle="Results";
 function customPageHeader(){?>
 <!--Map related css and js-->
@@ -26,40 +28,44 @@ include('head.php');
 			<!-- Ability to update the search -->
 			<!-- This is on the left of the flex box -->
 			<div class="updateSearch">
-				<form action="results.php" onsubmit="return validateSearch(this)">
+				<form action="results.php" method="post" onsubmit="return validateSearch(this)">
 					<!-- Get the location they want to search along with all other inputs -->
 					<div class="registerBox updateBox">
 						<div>
+							<label for="searchBar"><b>Name</b></label> <br>
+							<div class="">
+								<input type="text" id="searchNameBar" name="name" placeholder="Name of parking spot">
+							</div>
 							<label for="searchBar"><b>Location</b></label> <br>
 							<div class="sliderContainer">
-								<input type="search" id="searchBar" name="location" placeholder="Location of parking spot">
-								<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location" onclick="getLocation(); return false;">
+								<input type="search" id="searchBar" name="location" placeholder="Location of parking spot - (longitude,latitude)">
+								<input type="image" id="locationButton" src="res/location_icon_clear.png" width="15" height="15" title="Current Location" alt="Current Location" onclick="getLocation();return false;">
 							</div>
 							<br>
 							<hr>
-							<label for="distance"><b>Distance from Current Location</b></label><br>
+							<label><b>Distance from Current Location</b></label><br>
 							<div class="sliderContainer">
 								<p class="textRange">0 km </p>
 			  					<input type="range" name="distance" id="dist" value="5" min="0" max="10" step="0.01" class="slider" onchange="modifyOffset(this)">
 			  					<p class="textRange"> 10 km</p>
-			  					<output for="dist" id="distance">5</output><br>
+								<output for="dist"  id="distance">5</output>
 		  					</div>
 		  					<hr>
 		  					<!-- Displaying the prices so the labels match with the inputs -->
 							<div class="priceTable">
 								<div class="col">
 									<label for="minPrice" id="minPriceLabel"><b>Min Price ($)</b></label><br>
-									<input type="number" name="min" id="minPrice" step="0.01" min="0">
+									<input type="number" name="minPrice" id="minPrice" step="0.01" min="0">
 								</div>
 								<div class="col">
 									<label for="maxPrice" id="maxPriceLabel"><b>Max Price ($)</b></label><br>
-									<input type="number" name="max" id="maxPrice" step="0.01" min="0">
+									<input type="number" name="maxPrice" id="maxPrice" step="0.01" min="0">
 								</div>
 							</div>
 							<hr>
 							<div class="selectDropdown">
 								<label for="rating"><b>Min Rating</b></label>
-								<select id="rating">
+								<select id="rating" name="minRating">
 									<option value="0">Any</option>
 									<option value="1">1 star</option>
 									<option value="2">2 star</option>
@@ -68,9 +74,10 @@ include('head.php');
 									<option value="5">5 star</option>
 								</select>
 							</div>
+							<!-- doesnt actually search by this -->
 							<div class="selectDropdown">
 								<label for="type"><b>Type of Spot</b></label>
-								<select id="type">
+								<select id="type" name="type">
 									<option value="Any">Any</option>
 									<option value="Outdoor">Outdoor</option>
 									<option value="Underground">Underground</option>
@@ -78,7 +85,7 @@ include('head.php');
 								</select>
 							</div>
 						</div>
-						<input type="submit" class="register-button" value="Search">
+						<input type="submit" class="register-button" name="search" value="Search">
 					</div>
 				</form>
 			</div>
@@ -95,8 +102,10 @@ include('head.php');
 
 
 				if (isset($_POST["search"])){
+					// open db
 			       $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
 
+					// get posted data
 			       $name = $_POST["name"];
 			       // $name = "";
 			       $location = $_POST["location"];
@@ -107,8 +116,10 @@ include('head.php');
 			       $minRating = $_POST["minRating"];
 			       $type = $_POST["type"];
 
+			       // split to get longitude and latitude split by comma
 			       list($current_longitude, $current_latitude) = explode(',', $location);
 
+			       // js script for map creation
 			       echo "<script>
 
 						console.log('Map');
@@ -138,21 +149,41 @@ include('head.php');
 				    </script>";
 
 			       try{
+			       	// redeclare db
 				        $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
 						$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						// print_r("Reached");
-						$result = $pdo->query("SELECT parkingSpot.pid from parkingSpot inner join review on parkingSpot.pid = review.pid where parkingSpot.name like '%$name%' and parkingSpot.price between '$minPrice' and '$maxPrice' and parkingSpot.type = type and 111.111 * DEGREES(ACOS(LEAST(COS(RADIANS(parkingSpot.latitude)) * COS(RADIANS('$current_latitude')) * COS(RADIANS(parkingSpot.longitude - ('$current_longitude'))) + SIN(RADIANS(parkingSpot.latitude)) * SIN(RADIANS(parkingSpot.latitude)), 1.0))) < '$distance' group by parkingSpot.pid having avg(review.rating) > '$minRating' ");
-						// 
-						// print_r($result->fetchAll());
+	
+						// search based on name, price range and distance
+						// does not search by type because of 'any' field
+
+						// distance calculation
+						$query = "SELECT parkingSpot.pid from parkingSpot inner join review on parkingSpot.pid = review.pid where parkingSpot.name like '%$name%' and parkingSpot.price between '$minPrice' and '$maxPrice' and 111.111 * DEGREES(ACOS(LEAST(COS(RADIANS(parkingSpot.latitude)) * COS(RADIANS('$current_latitude')) * COS(RADIANS(parkingSpot.longitude - ('$current_longitude'))) + SIN(RADIANS(parkingSpot.latitude)) * SIN(RADIANS(parkingSpot.latitude)), 1.0))) < '$distance' group by parkingSpot.pid having avg(review.rating) >= '$minRating' ";
+						$result = $pdo->query($query);
+
+						// no results found
+						if ($result->rowCount() == 0){
+							echo "<script>alert('No results found')</script>";
+							sleep(1);
+							// header("location: search.php");
+						}
+						// iterate through all results
 						foreach ($result as $spots) {
+							// store parking id
 							$pid = $spots['pid'];
+							// get that spot's details
 							$parkingSpotResults = $pdo->query("SELECT * from parkingSpot where pid = '$pid'");
+							// iterate through the details of the spot
 							foreach ($parkingSpotResults as $ROW) {
+								// get the average rating of the spot
 								$ratingResult = $pdo->query("SELECT avg(rating) FROM review WHERE pid= '$pid'");
+								// round to 5 decimal places
 								$avgRating = round($ratingResult->fetchAll()[0][0],5);
 
+								// distance calc
 								$distanceBetween = 111.111 * rad2deg(ACOS(min(COS(deg2rad($ROW['latitude'])) * COS(deg2rad('$current_latitude')) * COS(deg2rad($ROW['longitude'] - ('$current_longitude'))) + SIN(deg2rad($ROW['latitude'])) * SIN(deg2rad($ROW['latitude'])), 1.0)));
 
+								// js script to create markers on map
+								// populate table with spot data
 							    echo "<script>
 
 								    // create marker
@@ -176,7 +207,7 @@ include('head.php');
 						}
 						echo ('</div>');
 					} catch (PDOException $e){
-						echo $e->getMessage();
+						// echo $e->getMessage();
 					}
 
 				}

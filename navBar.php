@@ -1,3 +1,6 @@
+<!-- the nav bar which is repeated everywhere -->
+
+
 <header>
 		<div class="logo">
 			<picture>
@@ -21,7 +24,7 @@
 	  		</div>
 	  		<!-- Right nav to the right -->
   		<div class="rightNav">
-  			<a id="logout" href="sign-in.php">Logout</a>
+  			<a id="logout" href="sign-in.php?logout=true">Logout</a>
   		</div>
   		</div>
 	</nav>

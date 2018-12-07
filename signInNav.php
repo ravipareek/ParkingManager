@@ -1,3 +1,5 @@
+<!-- the nav bar for the signin page -->
+
 	<header id="login">
 		<div class="logo">
 			<picture>

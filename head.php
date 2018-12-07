@@ -1,3 +1,5 @@
+<!-- php file with repeated head code -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

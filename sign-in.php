@@ -4,20 +4,22 @@
 	$PageTitle="Sign In";
 	include('head.php');
 
+	// registering a new user
 	if (isset($_POST["register"])){
        $pdo = new PDO('mysql:host=localhost;dbname=comp4ww3', 'pareek', 'hello');
 
+       //  get post data
        $name = $_POST["name"];
        $email = $_POST["email"];
        $password = $_POST["password"];
        $type = $_POST["user-type"];
 
-
-       $hash = password_hash($password, PASSWORD_DEFAULT);
+       // hash and salt given password
+       $hash = password_hash($password, PASSWORD_BCRYPT);
 
        $owner = 0;
        $driver = 0;
-
+       // determine the binary value for user type
        if (strpos($type[0], 'owner') !== false || strpos($type[1], 'owner') !== false){
        	$owner = 1;
        }
@@ -26,18 +28,18 @@
        	$driver = 1;
        }
 
+       // open db connection
        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       // print_r("Reached");
        $result = $pdo->query("SELECT * FROM user where user.email = '$email' ");
-       // print_r($result->fetchAll());
+
+       // if no results
        if($result->rowCount() != 0){
-       	// header('location: signin.php');
        	echo "<script>alert('Email already registered')</script>";
-       	// exit;
        }
+       // new user registering
        else{
 	       try{
-
+	       	// sql query to insert into db
 	        $sql = 'INSERT INTO user(name, email, driver, owner, password) VALUES(:name, :email, :driver, :owner, :password)';
 	        $stmt = $pdo->prepare($sql);
 	        $stmt->bindValue(':name', $name);
@@ -50,15 +52,15 @@
 	        $stmt->execute();
 	       }
 	       catch(PDOException $e){
-	       	echo $e->getMessage();
+	       	// echo $e->getMessage();
 	       }
        }
 	}
+	// user wants to logout
 	elseif (isset($_GET['logout'])) {
-		// print_r("logout");
+		// stop the session and destroy all variables
 		session_unset();
 		session_destroy();
-		// print_r($_SESSION['uid']);
 		header("location: sign-in.php");
 	}
 

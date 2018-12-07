@@ -57,6 +57,7 @@ session_start();
 							<option value="5">5 star</option>
 						</select>
 					</div>
+					<!-- doesnt actually search by this -->
 					<div class="selectDropdown">
 						<label for="type"><b>Type of Spot</b></label>
 						<select id="type" name="type">
